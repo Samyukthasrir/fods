@@ -1,0 +1,33 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Example data (replace with your actual data)
+data = {
+    'Month': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    'Sales': [10000, 12000, 15000, 18000, 22000, 25000, 27000, 26000, 24000, 20000, 15000, 12000]
+}
+
+df = pd.DataFrame(data)
+
+# Line plot for Monthly Sales
+plt.figure(figsize=(10, 6))
+plt.plot(df['Month'], df['Sales'], marker='o', linestyle='-', color='b', label='Monthly Sales')
+plt.title('Monthly Sales Trend')
+plt.xlabel('Month')
+plt.ylabel('Sales ($)')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+# Bar plot for Monthly Sales
+plt.figure(figsize=(10, 6))
+plt.bar(df['Month'], df['Sales'], color='g', alpha=0.7, label='Monthly Sales')
+plt.title('Monthly Sales Distribution')
+plt.xlabel('Month')
+plt.ylabel('Sales ($)')
+plt.xticks(rotation=45)
+plt.grid(axis='y')
+plt.legend()
+plt.tight
