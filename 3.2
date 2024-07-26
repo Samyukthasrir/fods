@@ -1,0 +1,18 @@
+import pandas as pd
+
+# Sample data: Recovery times of patients in days
+data = {
+    'Patient ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Recovery Time (days)': [5, 7, 6, 10, 8, 9, 4, 7, 6, 5]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Calculate the 10th, 50th, and 90th percentiles of recovery times
+percentiles = df['Recovery Time (days)'].quantile([0.10, 0.50, 0.90])
+
+# Print the results
+print("10th percentile of recovery times:", percentiles[0.10])
+print("50th percentile (median) of recovery times:", percentiles[0.50])
+print("90th percentile of recovery times:", percentiles[0.90])
