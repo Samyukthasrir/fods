@@ -1,0 +1,11 @@
+import pandas as pd
+data = {
+    'Server ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Response Time (ms)': [120, 150, 200, 170, 160, 140, 130, 180, 210, 190]
+}
+df = pd.DataFrame(data)
+percentiles = df['Response Time (ms)'].quantile([0.25, 0.50, 0.75])
+
+print("25th percentile of response times:", percentiles[0.25])
+print("50th percentile (median) of response times:", percentiles[0.50])
+print("75th percentile of response times:", percentiles[0.75])
