@@ -1,0 +1,20 @@
+import pandas as pd
+
+# Define the dataset
+data = {
+    'WEATHER_CONDITION': ['Sunny', 'Rainy', 'Cloudy', 'Windy', 'Snowy'],
+    'OCCURRENCES': [150, 120, 100, 80, 50]
+}
+
+# Create a DataFrame from the dataset
+df = pd.DataFrame(data)
+
+# Calculate the frequency distribution (which is already in the dataset)
+# and identify the most common weather condition
+most_common_weather = df.loc[df['OCCURRENCES'].idxmax()]
+
+# Print the results
+print("Frequency distribution of weather conditions:")
+print(df)
+print("\nMost common weather type:")
+print(f"{most_common_weather['WEATHER_CONDITION']} with {most_common_weather['OCCURRENCES']} occurrences")
