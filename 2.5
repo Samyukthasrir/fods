@@ -1,0 +1,10 @@
+import numpy as np
+fuel_efficiency = np.array([25, 30, 22, 28, 32, 24, 29, 35, 26, 31])
+
+average_fuel_efficiency = np.mean(fuel_efficiency)
+model_1_efficiency = fuel_efficiency[0]  # Fuel efficiency of the first car model
+model_2_efficiency = fuel_efficiency[-1] # Fuel efficiency of the last car model
+percentage_improvement = ((model_2_efficiency - model_1_efficiency) / model_1_efficiency) * 100
+
+print("Average fuel efficiency of all car models:", average_fuel_efficiency)
+print(f"Percentage improvement in fuel efficiency from model 1 ({model_1_efficiency} MPG) to model 2 ({model_2_efficiency} MPG):", percentage_improvement)
