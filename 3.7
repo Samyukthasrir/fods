@@ -1,0 +1,17 @@
+import numpy as np
+import pandas as pd
+
+# Load the dataset
+# Assuming the CSV file has columns: 'Date' and 'Daily Sales'
+df = pd.read_csv('daily_sales.csv')
+
+# Ensure 'Date' column is of datetime type
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Extract the daily sales as a NumPy array
+daily_sales = df['Daily Sales'].values
+
+# Calculate the variance of daily sales
+variance = np.var(daily_sales, ddof=0)  # Population variance (ddof=0)
+
+print("Variance of daily sales:", variance)
