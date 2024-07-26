@@ -1,0 +1,17 @@
+import numpy as np
+
+expenses = np.array([
+    [5000, 7000, 6000],  # Month 1
+    [5500, 7200, 6100],  # Month 2
+    [6000, 7400, 6200],  # Month 3
+    [6200, 7500, 6300],  # Month 4
+    [5900, 7300, 6400],  # Month 5
+    [6100, 7100, 6500]   # Month 6
+])
+
+variance = np.var(expenses, axis=0, ddof=0)  # Using ddof=0 for population variance
+print("Variance of expenses for each department:", variance)
+
+covariance_matrix = np.cov(expenses, rowvar=False)
+print("Covariance matrix of expenses:")
+print(covariance_matrix)
