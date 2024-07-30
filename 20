@@ -1,0 +1,6 @@
+import numpy as np
+
+daily_sales = np.array([150, 200, 180, 175, 190, 210, 160, 170, 185, 195, 180, 175, 200, 210, 220, 180, 190, 205, 195, 180, 170, 200, 210, 190, 185, 195, 200, 210, 220, 230])
+
+variance_sales = np.var(daily_sales)
+print(f"Variance of Daily Sales: {variance_sales:.2f}")
