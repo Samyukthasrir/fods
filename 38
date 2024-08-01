@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    'month': pd.date_range(start='2023-01-01', periods=12, freq='M').month_name(),
+    'sales': [1500, 2300, 1700, 2500, 2200, 1900, 2100, 3000, 2800, 3200, 3300, 3600]
+}
+
+df = pd.DataFrame(data)
+
+plt.figure(figsize=(10, 5))
+plt.plot(df['month'], df['sales'], marker='o', linestyle='-', color='b')
+plt.title('Monthly Sales Data - Line Plot')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+plt.grid(True)
+plt.xticks(rotation=45) 
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 5))
+plt.bar(df['month'], df['sales'], color='c')
+plt.title('Monthly Sales Data - Bar Plot')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+plt.xticks(rotation=45) 
+plt.tight_layout()
+plt.show()
