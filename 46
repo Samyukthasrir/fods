@@ -1,0 +1,34 @@
+import pandas as pd
+from datetime import datetime
+
+data = {
+    'Employee ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Department': ['HR', 'Engineering', 'HR', 'Engineering', 'Sales', 'Sales', 'HR', 'Engineering', 'Sales', 'Engineering'],
+    'Salary': [50000, 80000, 60000, 85000, 55000, 70000, 62000, 90000, 72000, 88000],
+    'Joining Date': ['2015-06-01', '2016-07-15', '2014-05-20', '2018-11-30', '2017-09-12', '2019-03-01', '2020-01-22', '2021-05-18', '2022-06-22', '2013-02-14']
+}
+
+df = pd.DataFrame(data)
+
+df['Joining Date'] = pd.to_datetime(df['Joining Date'])
+
+highest_salaries = df.groupby('Department')['Salary'].max().reset_index(name='Highest Salary')
+lowest_salaries = df.groupby('Department')['Salary'].min().reset_index(name='Lowest Salary')
+
+print("Highest Salaries in Each Department:")
+print(highest_salaries)
+print("\nLowest Salaries in Each Department:")
+print(lowest_salaries)
+
+current_date = pd.Timestamp.now()
+df['Tenure'] = (current_date - df['Joining Date']).dt.days / 365
+average_tenure = df['Tenure'].mean()
+
+print(f"\nAverage Tenure of Employees: {average_tenure:.2f} years")
+
+specific_date = '2018-01-01'
+specific_date = pd.to_datetime(specific_date)
+employees_before_date = df[df['Joining Date'] < specific_date]
+
+print("\nEmployees who joined before 2018-01-01:")
+print(employees_before_date)
