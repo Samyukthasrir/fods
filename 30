@@ -1,0 +1,49 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create a dictionary with random sales data
+data = {
+    'month': pd.date_range(start='2023-01-01', periods=12, freq='M').month_name(),
+    'electronics': np.random.randint(1000, 5000, 12),
+    'clothing': np.random.randint(2000, 7000, 12),
+    'home_appliances': np.random.randint(1500, 6000, 12),
+    'books': np.random.randint(500, 4000, 12),
+    'toys': np.random.randint(1000, 4500, 12)
+}
+
+# Create a Pandas DataFrame
+df = pd.DataFrame(data)
+
+# Calculate total sales by product category
+total_sales = df[['electronics', 'clothing', 'home_appliances', 'books', 'toys']].sum()
+
+# Plot monthly sales trends
+plt.figure(figsize=(12, 6))
+for category in total_sales.index:
+    plt.plot(df['month'], df[category], label=category)
+plt.title('Monthly Sales Trends by Product Category')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Plot monthly sales scatter plot
+plt.figure(figsize=(12, 6))
+for category in total_sales.index:
+    plt.scatter(df['month'], df[category], label=category)
+plt.title('Monthly Sales Scatter Plot by Product Category')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Plot total sales distribution
+plt.figure(figsize=(12, 6))
+plt.bar(total_sales.index, total_sales.values, color=['blue', 'green', 'red', 'cyan', 'magenta'])
+plt.title('Total Sales Distribution by Product Category')
+plt.xlabel('Product Category')
+plt.ylabel('Total Sales')
+plt.show()
