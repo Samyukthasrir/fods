@@ -1,0 +1,16 @@
+import pandas as pd
+from scipy import stats
+
+data = {
+    'Transaction ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Purchase Amount ($)': [50, 20, 20, 100, 50, 20, 30, 50, 100, 20]
+}
+
+df = pd.DataFrame(data)
+
+mean_purchase_amount = df['Purchase Amount ($)'].mean()
+print(f"Mean (Average) Purchase Amount: ${mean_purchase_amount:.2f}")
+
+mode_purchase_amount = df['Purchase Amount ($)'].mode()
+print("Mode of Purchase Amounts:")
+print(mode_purchase_amount)
