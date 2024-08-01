@@ -1,0 +1,40 @@
+import pandas as pd
+import random
+
+data = [
+    {
+        'OrderID': i,
+        'CustomerID': random.randint(1, 20),
+        'ProductID': random.randint(1, 50),
+        'Quantity': random.randint(1, 5),
+        'TotalPrice': random.uniform(10, 100) * random.randint(1, 5)
+    } for i in range(1, 101)
+]
+
+# Create a Pandas DataFrame
+df = pd.DataFrame(data)
+
+# Print the first few rows of the DataFrame
+print(df.head())
+
+# Calculate total orders
+total_orders = df.shape[0]
+print(f"Total number of orders: {total_orders}")
+
+# Find the most popular products (Top 5)
+most_popular = df['ProductID'].value_counts().nlargest(5)
+print(f"\nMost frequent products (Top 5):\n{most_popular}")
+
+# Calculate orders per customer (Sample 5)
+orders_per_customer = df.groupby('CustomerID')['OrderID'].count().head()
+print(f"\nOrders per customer (Sample 5):\n{orders_per_customer}")
+
+# Calculate average order value and total revenue
+avg_order_value = df['TotalPrice'].mean()
+total_revenue = df['TotalPrice'].sum()
+print(f"\nAverage order value: ${avg_order_value:.2f}")
+print(f"Total revenue: ${total_revenue:.2f}")
+
+# Calculate Customer Lifetime Value (CLTV) for the top 3 customers
+customer_cltv = df.groupby('CustomerID')['TotalPrice'].sum().nlargest(3)
+print(f"\nTop 3 customers by CLTV:\n{customer_clt
